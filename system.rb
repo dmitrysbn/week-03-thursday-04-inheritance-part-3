@@ -13,7 +13,11 @@ class System
   end
 
   def add(body)
-    @bodies << body
+    if bodies.include?(body)
+      puts "There can only be one #{body.name}."
+    else
+      @bodies << body
+    end
   end
 
   def total_mass
@@ -33,9 +37,12 @@ moon = Moon.new('Moon', 7.348 * 10**22, 27.32, earth)
 solar_system.add(earth)
 solar_system.add(sun)
 solar_system.add(moon)
+solar_system.add(sun)
 
 puts "Bodies in the Solar System:"
 pp solar_system.bodies
 
 puts "Total mass of the Solar System:"
 puts solar_system.total_mass
+puts Planet.all(solar_system).inspect
+puts Star.all(solar_system).inspect

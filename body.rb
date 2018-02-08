@@ -1,5 +1,9 @@
 class Body
 
+  def self.all(system)
+    system.bodies.select { |body| body.class == self }
+  end
+
   def initialize(name, mass)
     @name = name
     @mass = mass
